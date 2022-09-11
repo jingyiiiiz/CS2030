@@ -11,12 +11,13 @@ void serveCruises(List<Cruise> cruises, int numOfLoaders) {
             currentTime = current.getArrivalTime();
         }
 
-        for (int j = 0; j < numOfLoadersRequired; j++) {
-            new Service(loader, current, currentTime);
-            loader = loader.nextLoader();
-            if (j == numOfLoadersRequired - 1) {
+        for (int j = 1; j <= numOfLoadersRequired; j++) {
+            Service service = new Service(loader, current, currentTime);
+            System.out.println(service);
+            if (j % numOfLoaders == 0 || j == numOfLoadersRequired) {
                 currentTime = currentTime + current.getServiceTime();
             }
+            loader = loader.nextLoader();
         }
     }
 }
