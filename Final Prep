@@ -1,0 +1,24 @@
+
+// Asynchronous Porgramming
+class Async
+<R> Async<R> thenDoThis(Function<? super T, ? extends R> mapper) {
+    return new Async<R>(() -> mapper.apply(this.join()));
+}
+
+class CompletableFuture {
+    static runAsync // -> create instances of Completable Future out of Runnables
+    static supplyAsync // -> create instances of CompletableFuture out of Suppliers
+
+    completedFuture - equivalent to - of;
+    thenCompose - equivalent to - flatMap;
+    thenApply - equivalent to - map;
+}
+
+class CompletionStage {
+    //callback methods
+    thenAccept(Consumer<? super T> action)
+    thenApply(Function<? super T, ? extends U> fn)
+    thenCompose(Function<? super T, ? extends CompletableStage<U>> fn)
+    thenCombine(CompletionStage<? extends U> other, BiFunction<? super T, ? super U, ? extends V> fn)
+}
+// always ensure that join() is called !!
